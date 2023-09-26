@@ -1,0 +1,43 @@
+root@ip-172-31-64-189:/var/snap/amazon-ssm-agent/7528/upgrad/vpc# terraform apply
+aws_vpc.UpgradVPC: Refreshing state... [id=vpc-0c87e097d8c0661e1]
+aws_subnet.public_subnet[0]: Refreshing state... [id=subnet-0bd781b0608f04cd3]
+aws_subnet.public_subnet[1]: Refreshing state... [id=subnet-0095b94acc3099e33]
+aws_route_table.public: Refreshing state... [id=rtb-05a0651171eb4e398]
+aws_internet_gateway.veena-igw: Refreshing state... [id=igw-02b887174df8ebe72]
+aws_subnet.private_subnet[0]: Refreshing state... [id=subnet-032f4291f85b9a764]
+aws_subnet.private_subnet[1]: Refreshing state... [id=subnet-060fe3c5c37ee3fc1]
+aws_route_table.private: Refreshing state... [id=rtb-07651cd813b4e03da]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-002cd8087e4df8fee]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-021b5f9b551907c89]
+aws_route.public_internet_gateway: Refreshing state... [id=r-rtb-05a0651171eb4e3981080289494]
+aws_eip.nat_eip: Refreshing state... [id=eipalloc-0773a0da94013f55b]
+aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-08a12ecd10d974515]
+aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-008d8fe058189ac05]
+aws_nat_gateway.nat-gateway-veena: Refreshing state... [id=nat-0ed43cf8e357a17ff]
+aws_route.private_internet_gateway: Refreshing state... [id=r-rtb-07651cd813b4e03da1080289494]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_route.private_internet_gateway will be updated in-place
+  ~ resource "aws_route" "private_internet_gateway" {
+      + gateway_id             = "nat-0ed43cf8e357a17ff"
+        id                     = "r-rtb-07651cd813b4e03da1080289494"
+      - nat_gateway_id         = "nat-0ed43cf8e357a17ff" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_route.private_internet_gateway: Modifying... [id=r-rtb-07651cd813b4e03da1080289494]
+aws_route.private_internet_gateway: Modifications complete after 1s [id=r-rtb-07651cd813b4e03da1080289494]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.

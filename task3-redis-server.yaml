@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-server
+  namespace: demo
+spec:
+  serviceName: "redis-server"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-server
+  template:
+    metadata:
+      labels:
+        app: redis-server
+    spec:
+      initContainers:
+      - name: init-redis
+        image: redis:latest
+        command:
+        - bash
+        - "-c"
+        - |
+          cp /mnt/redis-config /etc/redis-config.conf
+        volumeMounts:
+        - name: redis-claim
+          mountPath: /etc
+        - name: config-map
+          mountPath: /mnt/
+      containers:
+      - name: redis-server
+        image: redis:6.2.7-alpine
+        ports:
+        - containerPort: 6379
+          name: redis
+        command:
+          - redis-server
+          - "/etc/redis-config.conf"
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /var/lib/redis
+        - name: redis-claim
+          mountPath: /etc
+      volumes:
+      - name: config-map
+        configMap:
+          name: redis
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-claim
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: gp2
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: gp2

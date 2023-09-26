@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-server
+  namespace: demo
+  labels:
+    app: redis-server
+spec:
+  type: ClusterIP
+  ports:
+  - name: redis
+    port: 6379
+    targetPort: redis
+  clusterIP: None
+  selector:
+    app: redis-server
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis
+  namespace: demo
+data:
+  redis-config: |
+    dir /var/lib/redis
+    appendonly yes
+    protected-mode no
+

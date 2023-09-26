@@ -1,0 +1,149 @@
+2023-09-25 11:26:43 [ℹ]  eksctl version 0.150.0-dev
+2023-09-25 11:26:43 [ℹ]  using region us-east-1
+2023-09-25 11:26:43 [✔]  using existing VPC (vpc-0c87e097d8c0661e1) and subnets (private:map[private-a:{subnet-032f4291f85b9a764 us-east-1a 10.0.2.0/24 0 } private-b:{subnet-060fe3c5c37ee3fc1 us-east-1b 10.0.3.0/24 0 }] public:map[public-a:{subnet-0bd781b0608f04cd3 us-east-1a 10.0.0.0/24 0 } public-b:{subnet-0095b94acc3099e33 us-east-1b 10.0.1.0/24 0 }])
+2023-09-25 11:26:43 [!]  custom VPC/subnets will be used; if resulting cluster doesn't function as expected, make sure to review the configuration of VPC/subnets
+2023-09-25 11:26:43 [ℹ]  nodegroup "ng-1" will use "ami-0dfcfee2c5797c24a" [AmazonLinux2/1.25]
+2023-09-25 11:26:43 [ℹ]  nodegroup "ng-2" will use "ami-0dfcfee2c5797c24a" [AmazonLinux2/1.25]
+2023-09-25 11:26:43 [ℹ]  using Kubernetes version 1.25
+2023-09-25 11:26:43 [ℹ]  creating EKS cluster "cluster-upgrad1" in "us-east-1" region with un-managed nodes
+2023-09-25 11:26:43 [ℹ]  2 nodegroups (ng-1, ng-2) were included (based on the include/exclude rules)
+2023-09-25 11:26:43 [ℹ]  will create a CloudFormation stack for cluster itself and 2 nodegroup stack(s)
+2023-09-25 11:26:43 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2023-09-25 11:26:43 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-1 --cluster=cluster-upgrad1'
+2023-09-25 11:26:43 [ℹ]  Kubernetes API endpoint access will use provided values {publicAccess=true, privateAccess=true} for cluster "cluster-upgrad1" in "us-east-1"
+2023-09-25 11:26:43 [ℹ]  CloudWatch logging will not be enabled for cluster "cluster-upgrad1" in "us-east-1"
+2023-09-25 11:26:43 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-1 --cluster=cluster-upgrad1'
+2023-09-25 11:26:43 [ℹ]  
+2 sequential tasks: { create cluster control plane "cluster-upgrad1", 
+    2 sequential sub-tasks: { 
+        4 sequential sub-tasks: { 
+            wait for control plane to become ready,
+            associate IAM OIDC provider,
+            7 parallel sub-tasks: { 
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/aws-load-balancer-controller",
+                    create serviceaccount "kube-system/aws-load-balancer-controller",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/cluster-autoscaler",
+                    create serviceaccount "kube-system/cluster-autoscaler",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/ebs-csi-controller-sa",
+                    create serviceaccount "kube-system/ebs-csi-controller-sa",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/efs-csi-controller-sa",
+                    create serviceaccount "kube-system/efs-csi-controller-sa",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/external-dns",
+                    create serviceaccount "kube-system/external-dns",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "cert-manager/cert-manager",
+                    create serviceaccount "cert-manager/cert-manager",
+                },
+                2 sequential sub-tasks: { 
+                    create IAM role for serviceaccount "kube-system/aws-node",
+                    create serviceaccount "kube-system/aws-node",
+                },
+            },
+            restart daemonset "kube-system/aws-node",
+        },
+        2 parallel sub-tasks: { 
+            create nodegroup "ng-1",
+            create nodegroup "ng-2",
+        },
+    } 
+}
+2023-09-25 11:26:43 [ℹ]  building cluster stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:26:43 [ℹ]  deploying stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:27:13 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:27:43 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:28:43 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:29:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:30:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:31:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:32:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:33:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:34:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:35:44 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-cluster"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-node"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-cluster-autoscaler"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-ebs-csi-controller-sa"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-efs-csi-controller-sa"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-external-dns"
+2023-09-25 11:37:44 [ℹ]  building iamserviceaccount stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-cert-manager-cert-manager"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-cluster-autoscaler"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-ebs-csi-controller-sa"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-efs-csi-controller-sa"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-node"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-cert-manager-cert-manager"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-cluster-autoscaler"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-ebs-csi-controller-sa"
+2023-09-25 11:37:45 [ℹ]  deploying stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-external-dns"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-efs-csi-controller-sa"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-node"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-cert-manager-cert-manager"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-external-dns"
+2023-09-25 11:37:45 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-cluster-autoscaler"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-ebs-csi-controller-sa"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-efs-csi-controller-sa"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-node"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-external-dns"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-cert-manager-cert-manager"
+2023-09-25 11:38:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-09-25 11:38:15 [ℹ]  serviceaccount "kube-system/aws-node" already exists
+2023-09-25 11:38:15 [ℹ]  updated serviceaccount "kube-system/aws-node"
+2023-09-25 11:38:49 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-cluster-autoscaler"
+2023-09-25 11:38:49 [ℹ]  created serviceaccount "kube-system/cluster-autoscaler"
+2023-09-25 11:38:53 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-efs-csi-controller-sa"
+2023-09-25 11:38:53 [ℹ]  created serviceaccount "kube-system/efs-csi-controller-sa"
+2023-09-25 11:38:54 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-09-25 11:38:54 [ℹ]  created serviceaccount "kube-system/aws-load-balancer-controller"
+2023-09-25 11:39:04 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-ebs-csi-controller-sa"
+2023-09-25 11:39:04 [ℹ]  created serviceaccount "kube-system/ebs-csi-controller-sa"
+2023-09-25 11:39:09 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-kube-system-external-dns"
+2023-09-25 11:39:09 [ℹ]  created serviceaccount "kube-system/external-dns"
+2023-09-25 11:39:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-addon-iamserviceaccount-cert-manager-cert-manager"
+2023-09-25 11:39:15 [ℹ]  created namespace "cert-manager"
+2023-09-25 11:39:15 [ℹ]  created serviceaccount "cert-manager/cert-manager"
+2023-09-25 11:39:15 [ℹ]  daemonset "kube-system/aws-node" restarted
+2023-09-25 11:39:15 [ℹ]  building nodegroup stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:39:15 [ℹ]  building nodegroup stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:39:15 [!]  subnets contain a mix of both local and availability zones
+2023-09-25 11:39:15 [!]  subnets contain a mix of both local and availability zones
+2023-09-25 11:39:16 [ℹ]  deploying stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:39:16 [ℹ]  deploying stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:39:16 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:39:16 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:39:46 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:39:46 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:40:27 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:40:33 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:41:08 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:41:15 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:41:48 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:42:40 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:42:56 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-1"
+2023-09-25 11:43:48 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-upgrad1-nodegroup-ng-2"
+2023-09-25 11:43:48 [ℹ]  waiting for the control plane to become ready
+2023-09-25 11:43:50 [✔]  saved kubeconfig as "/root/.kube/config"
+2023-09-25 11:43:50 [ℹ]  no tasks
+2023-09-25 11:43:50 [✔]  all EKS cluster resources for "cluster-upgrad1" have been created
+2023-09-25 11:43:50 [ℹ]  adding identity "arn:aws:iam::800119233252:role/eksctl-cluster-upgrad1-nodegroup-NodeInstanceRole-CYMIF3PMVY5D" to auth ConfigMap
+2023-09-25 11:43:50 [ℹ]  nodegroup "ng-1" has 0 node(s)
+2023-09-25 11:43:50 [ℹ]  waiting for at least 1 node(s) to become ready in "ng-1"
+2023-09-25 11:44:47 [ℹ]  nodegroup "ng-1" has 1 node(s)
+2023-09-25 11:44:47 [ℹ]  node "ip-10-0-2-170.ec2.internal" is ready
+2023-09-25 11:44:47 [ℹ]  adding identity "arn:aws:iam::800119233252:role/eksctl-cluster-upgrad1-nodegroup-NodeInstanceRole-1P5LIJDGERSXB" to auth ConfigMap
+2023-09-25 11:44:47 [ℹ]  nodegroup "ng-2" has 0 node(s)
+2023-09-25 11:44:47 [ℹ]  waiting for at least 1 node(s) to become ready in "ng-2"
+2023-09-25 11:45:23 [ℹ]  nodegroup "ng-2" has 1 node(s)
+2023-09-25 11:45:23 [ℹ]  node "ip-10-0-0-240.ec2.internal" is ready
+2023-09-25 11:45:26 [ℹ]  kubectl command should work with "/root/.kube/config", try 'kubectl get nodes'
+2023-09-25 11:45:26 [✔]  EKS cluster "cluster-upgrad1" in "us-east-1" region is ready
